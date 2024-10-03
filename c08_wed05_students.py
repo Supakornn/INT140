@@ -9,16 +9,11 @@
 def student_data(all: list, id: int, name: str, lastname: str):
     # build a list of (id, name, lastname)
     # append this list to all
-    if not isinstance(id, int):
-        raise TypeError("id must be an integer")
-    if not isinstance(name, str) or any(char.isdigit() for char in name):
-        raise TypeError("name must be a string")
-    if not isinstance(lastname, str) or any(char.isdigit() for char in name):
-        raise TypeError("lastname must be a string")
+    if not isinstance(id, int) or not str(id).startswith("67130500"):
+        raise TypeError("id must be an integer starting with 67130500")
     
-    id_str = str(id)
-    if not id_str.startswith("67130500"):
-        raise ValueError("Invalid ID")
+    if not name.isalpha() or not lastname.isalpha():
+        raise ValueError("Name and lastname must only contain letters")
     
     student_info = [id, name, lastname]
     all.append(student_info)
