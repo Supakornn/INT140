@@ -18,8 +18,9 @@ def read_one_student():
             count += 1
             if count == 3:
                 print("You have entered wrong id 3 times.")
-                print("Please try again later.")
-                exit()
+                if input("Do you want to continue (y/n): ").lower() == 'n':
+                    print("Please try again later.")
+                    exit()
             print("Id must be Integer")
             print("Please try again.")
 
@@ -33,8 +34,9 @@ def read_one_student():
             count += 1
             if count == 3:
                 print("You have entered wrong id 3 times.")
-                print("Please try again later.")
-                exit()
+                if input("Do you want to continue (y/n): ").lower() == 'n':
+                    print("Please try again later.")
+                    exit()
             print(f"Invalid name: {ve}")
             print("Please try again.")
 
@@ -48,8 +50,9 @@ def read_one_student():
             count += 1
             if count == 3:
                 print("You have entered wrong id 3 times.")
-                print("Please try again later.")
-                exit()
+                if input("Do you want to continue (y/n): ").lower() == 'n':
+                    print("Please try again later.")
+                    exit()
             print(f"Invalid lastname: {ve}")
             print("Please try again.")
 
