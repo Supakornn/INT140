@@ -6,33 +6,51 @@
 # 050 Sirinda Charoenwai
 # 051 Siriyakon Sangkaew
 
-def student_data(all: list, id: int, name: str, lastname: str):
-    # build a list of (id, name, lastname)
-    # append this list to all
-    if not isinstance(id, int) or not str(id).startswith("67130500"):
-        raise TypeError("id must be an integer starting with 67130500")
-    
-    if not name.isalpha() or not lastname.isalpha():
-        raise ValueError("Name and lastname must only contain letters")
-    
+def student_data(all: list, id: int, name: str, lastname: str):    
     student_info = [id, name, lastname]
     all.append(student_info)
 
 def read_one_member(all: list):
     while True:
         try:
-            # read id, name, lastname from user input
-            id = int(input("Enter id: "))
-            name = input("Enter name: ")
-            lastname = input("Enter lastname: ")
+            while True:
+                try:
+                    id = int(input("Enter id: "))
+                    if not str(id).startswith("67130500"):
+                        raise ValueError("id must start with 67130500")
+                    break
+                except ValueError as ve:
+                    print(f"Invalid id: {ve}")
+                    print("Please try again.")
+            
+            while True:
+                try:
+                    name = input("Enter name: ")
+                    if not name.isalpha():
+                        raise ValueError("Name must be string")
+                    break
+                except ValueError as ve:
+                    print(f"Invalid name: {ve}")
+                    print("Please try again.")
+            
+            while True:
+                try:
+                    lastname = input("Enter lastname: ")
+                    if not lastname.isalpha():
+                        raise ValueError("Lastname must be string")
+                    break
+                except ValueError as ve:
+                    print(f"Invalid lastname: {ve}")
+                    print("Please try again.")
+            
             student_data(all, id, name, lastname)
-            break 
-        except (TypeError, ValueError) as e:
-            print(f"Error: {e}. Please try again.")
+            break
+        except (ValueError, TypeError) as e:
+            print(f"Invalid input: {e}")
+            print("Please try again.")
 
 def main():
     students = []
-    # loop until all members are read
     while True:
         read_one_member(students)
         if input("Do you want to add more student (y/n): ").lower() == 'n':
