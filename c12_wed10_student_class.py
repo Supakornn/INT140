@@ -120,6 +120,6 @@ class _Bl:
 def main():
     ui = Ui()
     ui.main_menu()
-
+    
 if __name__ == "__main__":
     main()
